@@ -1,2 +1,2 @@
 # 2340-donation-tracker
-Group project for 2340 class
+Group project for CS2340 class
