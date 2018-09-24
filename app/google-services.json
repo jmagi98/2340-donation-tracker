@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "926969092167",
+    "firebase_url": "https://donationtracker-cs2350.firebaseio.com",
+    "project_id": "donationtracker-cs2350",
+    "storage_bucket": "donationtracker-cs2350.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926969092167:android:94ddfe19f9ec717a",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.donationtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926969092167-n8igbkhbenrri3469kfc757cil3jmul5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.donationtracker",
+            "certificate_hash": "10650c68cfd660dbe0180bfb9d919cf514995de6"
+          }
+        },
+        {
+          "client_id": "926969092167-qbaobfh7ht5og7m0608oblmic5k6luar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADLAPAwylWyUjaNsCgcl4XTFguW08al9g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926969092167-qbaobfh7ht5og7m0608oblmic5k6luar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
