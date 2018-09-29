@@ -34,11 +34,17 @@ public class LoginPage extends AppCompatActivity {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean wrong = true;
                 for (DataSnapshot ds : dataSnapshot.child("users").getChildren()) {
                     if (ds.child("email").getValue().equals(_username)
                             && ds.child("password").getValue().equals(_password)) {
                         changeToMainActivity();
+                        wrong = false;
+                        break;
                     }
+                }
+                if (wrong) {
+                    wrongLogin();
                 }
             }
 
@@ -55,8 +61,11 @@ public class LoginPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void wrongLogin() {
+        Toast.makeText(this, "Incorrect Username/password", Toast.LENGTH_LONG).show();
+    }
     public void changeToMainActivity() {
-        Toast.makeText(this, "You've logged in!", Toast.LENGTH_LONG);
+        Toast.makeText(this, "You've logged in!", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, MainActivity.class));
     }
 }

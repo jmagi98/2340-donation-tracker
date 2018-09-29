@@ -40,7 +40,6 @@ public class SignupPage extends AppCompatActivity {
         AccessLevel _accessLevel = (AccessLevel) _accessLevelSpinner.getSelectedItem();
 
         if (_username.length() > 0
-                && !_username.contains(" ")
                 && _password.length() > 0
                 && !_password.contains(" ")
                 && _e_mail.length() > 0
