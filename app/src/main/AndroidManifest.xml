@@ -27,6 +27,10 @@
         </activity>
         <activity android:name=".controllers.MainActivity">
         </activity>
+        <activity android:name=".controllers.LoadData">
+        </activity>
+        <activity android:name=".controllers.ShowData">
+        </activity>
     </application>
 
 </manifest>

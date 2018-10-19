@@ -20,4 +20,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "You've logged out!", Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
+
+    public void loaddataButtonOnClick1(View v) {
+        Intent i = new Intent(this, LoadData.class);
+        startActivity(i);
+    }
 }

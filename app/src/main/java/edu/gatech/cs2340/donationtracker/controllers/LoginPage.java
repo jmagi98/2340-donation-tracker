@@ -65,7 +65,7 @@ public class LoginPage extends AppCompatActivity {
         Toast.makeText(this, "Incorrect Username/password", Toast.LENGTH_LONG).show();
     }
     public void changeToMainActivity() {
-        Toast.makeText(this, "You've logged in!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "You've logged in!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, MainActivity.class));
     }
 }
