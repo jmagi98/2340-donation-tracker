@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.donationtracker.controllers;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,19 +22,31 @@ public class LoadData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_data);
 
-        locations = readSDFile();
+        new Thread(new Runnable() {
+            public void run() {
+                locations = readSDFile();
+            }
+        }).start();
+
+        /*
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 setloc();
             }
         });
+        */
     }
 
     public void show(View v) {
         Intent i = new Intent(this, ShowData.class);
 
-        setloc();
+
+        new Thread(new Runnable() {
+            public void run() {
+                setloc();
+            }
+        }).start();
 
         i.putExtra("list", (Serializable) locations);
         startActivity(i);
@@ -66,13 +77,11 @@ public class LoadData extends AppCompatActivity {
     }
 
     public void loaddataButtonOnClick(View view) {
-
-        runOnUiThread(new Runnable() {
-            @Override
+        new Thread(new Runnable() {
             public void run() {
                 setloc();
             }
-        });
+        }).start();
     }
 
     private List<Location> readSDFile() {
