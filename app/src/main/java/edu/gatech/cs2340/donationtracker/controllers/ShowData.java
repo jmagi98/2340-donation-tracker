@@ -14,11 +14,12 @@ import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.model.Location;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowData extends AppCompatActivity {
     private Spinner s;
-    List<Location> l;
+    List<Location> l = new ArrayList<>();
     TextView tvname;
     TextView tvlat;
     TextView tvlon;
@@ -79,8 +80,11 @@ public class ShowData extends AppCompatActivity {
 
 
     public void back(View v) {
-        Intent i = new Intent(this, LoadData.class);
-        i.putExtra("list", (Serializable) l);
+        Intent i = new Intent(this, WelcomePage.class);
         startActivity(i);
+    }
+
+    public void enter(View v) {
+
     }
 }
