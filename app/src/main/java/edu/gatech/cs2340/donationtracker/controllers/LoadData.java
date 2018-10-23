@@ -136,16 +136,16 @@ public class LoadData extends AppCompatActivity {
             db.child("locations").child(""+x).child("type").setValue(locations.get(x).get_type());
             db.child("locations").child(""+x).child("phone").setValue(locations.get(x).get_phone_number());
             db.child("locations").child(""+x).child("website").setValue(locations.get(x).get_website());
-       }
+        }
     }
 
-    public void loaddataButtonOnClick(View view) {
-        new Thread(new Runnable() {
-            public void run() {
-                setloc(locations.size());
-            }
-        }).start();
-    }
+//    public void loaddataButtonOnClick(View view) {
+//        new Thread(new Runnable() {
+//            public void run() {
+//                setloc(locations.size());
+//            }
+//        }).start();
+//    }
     public void enter(View view) {
 
     }
