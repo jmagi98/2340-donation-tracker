@@ -10,10 +10,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.google.gson.Gson;
 import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.model.Location;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 public class ShowData extends AppCompatActivity {
@@ -35,6 +37,7 @@ public class ShowData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_data);
+
         tvname = (TextView) findViewById(R.id.tvname);
         tvlat = (TextView) findViewById(R.id.tvlat);
         tvlon = (TextView) findViewById(R.id.tvlon);
@@ -46,7 +49,8 @@ public class ShowData extends AppCompatActivity {
         tvphone = (TextView) findViewById(R.id.tvphone);
         tvweb = (TextView) findViewById(R.id.tvweb);
 
-        l = ((List<Location>) getIntent().getExtras().getSerializable("list"));
+        String temp = getIntent().getExtras().getString("list");
+        l = Arrays.asList(new Gson().fromJson(temp, Location[].class));
 
         s = (Spinner) findViewById(R.id.spinner);
 

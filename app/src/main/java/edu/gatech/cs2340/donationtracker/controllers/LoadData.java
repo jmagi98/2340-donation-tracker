@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import com.google.firebase.database.*;
+import com.google.gson.Gson;
 import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.model.Location;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +23,6 @@ public class LoadData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_data);
-
-        new Thread(new Runnable() {
-            public void run() {
-                locations = readSDFile();
-            }
-        }).start();
-
         /*
         runOnUiThread(new Runnable() {
             @Override
@@ -40,15 +35,8 @@ public class LoadData extends AppCompatActivity {
 
     public void show(View v) {
         Intent i = new Intent(this, ShowData.class);
-
-
-        new Thread(new Runnable() {
-            public void run() {
-                setloc();
-            }
-        }).start();
-
-        i.putExtra("list", (Serializable) locations);
+        String temp = new Gson().toJson(locations);
+        i.putExtra("list", temp);
         startActivity(i);
     }
 
@@ -56,6 +44,8 @@ public class LoadData extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
+
+    /*
 
     public void setloc() {
 
@@ -75,13 +65,9 @@ public class LoadData extends AppCompatActivity {
             db.child("locations").child(""+x).child("website").setValue(locations.get(x).get_website());
         }
     }
+    */
 
     public void loaddataButtonOnClick(View view) {
-        new Thread(new Runnable() {
-            public void run() {
-                setloc();
-            }
-        }).start();
     }
 
     private List<Location> readSDFile() {
@@ -89,15 +75,17 @@ public class LoadData extends AppCompatActivity {
 
         try {
             InputStream is = getResources().openRawResource(R.raw.locationdata);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 
             String line;
             br.readLine(); //get rid of header line
             while ((line = br.readLine()) != null) {
                 String[] tokens = line.split(",");
+                Log.d("token", tokens[1]);
                 l.add(new Location(tokens[1], Double.parseDouble(tokens[2]), Double.parseDouble(tokens[3]), tokens[4], tokens[5], tokens[6], Integer.parseInt(tokens[7]), tokens[8], tokens[9], tokens[10]));
+
             }
-            br.close();
+
         } catch (IOException e) {
 
         }

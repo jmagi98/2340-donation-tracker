@@ -1,8 +1,11 @@
 package edu.gatech.cs2340.donationtracker.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
-public class Location implements Serializable {
+public class Location {
     private String _name;
     private double _latitude;
     private double _longitude;
@@ -26,6 +29,7 @@ public class Location implements Serializable {
         _phone_number = phoneNumber;
         _website = website;
     }
+
 
     public String get_name() {
         return _name;
@@ -66,13 +70,6 @@ public class Location implements Serializable {
     public String get_website() {
         return _website;
     }
-
-    public String toString() {
-        return get_name();
-    }
-
-
-
 
 
 }
