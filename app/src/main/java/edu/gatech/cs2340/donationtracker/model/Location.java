@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Location {
     private String _name;
@@ -16,6 +17,7 @@ public class Location {
     private String _type;
     private String _phone_number;
     private String _website;
+    private List<DonationItem> _items;
 
     public Location(String name, double latitude, double longitude, String streetAddress, String city, String state, int zip, String locationType, String phoneNumber, String website) {
         _name = name;
@@ -29,7 +31,6 @@ public class Location {
         _phone_number = phoneNumber;
         _website = website;
     }
-
 
     public String get_name() {
         return _name;
@@ -71,5 +72,16 @@ public class Location {
         return _website;
     }
 
+    public List<DonationItem> getItems() {
+        return _items;
+    }
+
+    public void addItem(DonationItem item) {
+        _items.add(item);
+    }
+
+    public void removeItem(DonationItem item) {
+        _items.remove(item);
+    }
 
 }
