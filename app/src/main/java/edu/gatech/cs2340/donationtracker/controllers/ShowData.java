@@ -10,17 +10,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.google.gson.Gson;
 import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.model.Location;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowData extends AppCompatActivity {
     private Spinner s;
-    List<Location> l;
+    List<Location> l = new ArrayList<>();
     TextView tvname;
     TextView tvlat;
     TextView tvlon;
@@ -37,7 +36,6 @@ public class ShowData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_data);
-
         tvname = (TextView) findViewById(R.id.tvname);
         tvlat = (TextView) findViewById(R.id.tvlat);
         tvlon = (TextView) findViewById(R.id.tvlon);
@@ -49,8 +47,7 @@ public class ShowData extends AppCompatActivity {
         tvphone = (TextView) findViewById(R.id.tvphone);
         tvweb = (TextView) findViewById(R.id.tvweb);
 
-        String temp = getIntent().getExtras().getString("list");
-        l = Arrays.asList(new Gson().fromJson(temp, Location[].class));
+        l = ((List<Location>) getIntent().getExtras().getSerializable("list"));
 
         s = (Spinner) findViewById(R.id.spinner);
 
@@ -83,8 +80,11 @@ public class ShowData extends AppCompatActivity {
 
 
     public void back(View v) {
-        Intent i = new Intent(this, LoadData.class);
-        i.putExtra("list", (Serializable) l);
+        Intent i = new Intent(this, WelcomePage.class);
         startActivity(i);
+    }
+
+    public void enter(View v) {
+
     }
 }
