@@ -177,7 +177,7 @@ public class LoadData extends AppCompatActivity {
     }
 
     public void back(View v) {
-        Intent i = new Intent(this, WelcomePage.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 

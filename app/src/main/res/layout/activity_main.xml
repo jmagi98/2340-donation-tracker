@@ -32,8 +32,8 @@
             android:id="@+id/button2" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.121" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintVertical_bias="0.018"
             android:onClick="loaddataButtonOnClick1"/>
     <Button
             android:text="Enter Item"
@@ -43,7 +43,7 @@
             android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintHorizontal_bias="0.632" app:layout_constraintVertical_bias="0.196"
+            app:layout_constraintHorizontal_bias="0.778" app:layout_constraintVertical_bias="0.355"
             android:onClick="enterItemButtonClick"/>
     <Button
             android:text="Show Items"
@@ -55,4 +55,35 @@
             android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.95"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:onClick="showItems"/>
+    <TextView
+            android:text="No Longer Needed Because Auto Loads Data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.117"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+            android:text="Search Specific Location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchSpecific" app:layout_constraintEnd_toStartOf="@+id/enterItem"
+            android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.248"
+            android:onClick="searchSpec"/>
+    <Button
+            android:text="Search All Location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchAll" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintVertical_bias="0.373"
+            android:onClick="searchAll"/>
 </android.support.constraint.ConstraintLayout>

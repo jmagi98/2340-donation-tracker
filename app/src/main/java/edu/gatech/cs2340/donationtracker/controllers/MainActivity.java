@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void searchAll(View v) {
+        Intent i = new Intent(this, SearchAll.class);
+        startActivity(i);
+    }
+
+    public void searchSpec(View v) {
+        Intent i = new Intent(this, Search.class);
+        startActivity(i);
+    }
 
     public void logoutButtonOnClick(View v) {
         Intent intent = new Intent(this, WelcomePage.class);

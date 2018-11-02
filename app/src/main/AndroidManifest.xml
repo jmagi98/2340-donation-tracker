@@ -36,6 +36,10 @@
         </activity>
         <activity android:name=".controllers.ShowItems">
         </activity>
+        <activity android:name=".controllers.Search">
+        </activity>
+        <activity android:name=".controllers.SearchAll">
+        </activity>
     </application>
 
 </manifest>

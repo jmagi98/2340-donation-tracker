@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Spinner;
+import android.widget.*;
 import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.model.Category;
 import edu.gatech.cs2340.donationtracker.model.DonationItem;
@@ -48,6 +45,7 @@ public class DataEntry extends AppCompatActivity {
             ((GlobalVariables) getApplication()).setLocations(readSDFile());
         }
 
+        /*
         if(((GlobalVariables) getApplication()).getCategoryKeys() == null) {
             Map<String, List<DonationItem>> categories = new HashMap<>();
             ((GlobalVariables) getApplication()).setCategoryKeys("Clothing");
@@ -56,6 +54,7 @@ public class DataEntry extends AppCompatActivity {
             ((GlobalVariables) getApplication()).setCategoryKeys("Electronics");
             ((GlobalVariables) getApplication()).setCategoryKeys("Household");
             ((GlobalVariables) getApplication()).setCategoryKeys("Other");
+            */
 
 
 //            categories.put("Clothing", new ArrayList<DonationItem>());
@@ -65,23 +64,27 @@ public class DataEntry extends AppCompatActivity {
 //            categories.put("Household", new ArrayList<DonationItem>());
 //            categories.put("Other", new ArrayList<DonationItem>());
 //            ((GlobalVariables) getApplication()).set_categories(categories);
-        }
+        //}
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_entry);
-        List<Location> locations = ((GlobalVariables) getApplication()).getLocations();
-        ls = new ArrayList<>();
-        for(Location locals: locations) {
-            ls.add(locals);
-        }
+        //List<Location> locations = ((GlobalVariables) getApplication()).getLocations();
+        ls = ((GlobalVariables) getApplication()).getLocations();
+
+
+        //ls = new ArrayList<>();
+        //for(Location locals: locations) {
+        //    ls.add(locals);
+        //}
+
         sd = (EditText) findViewById(R.id.shortDescriptionText);
         ld = (EditText) findViewById(R.id.longDescriptionText);
         value = (EditText) findViewById(R.id.valueEditText);
 
         category = (Spinner) findViewById(R.id.categorySpinner);
-        ArrayAdapter cs = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<String>(((GlobalVariables) getApplication()).getCategoryKeys()));
-        Log.i("size","" + ((GlobalVariables) getApplication()).getCategoryKeys().size());
+        ArrayAdapter cs = new ArrayAdapter<Category>(getApplicationContext(), android.R.layout.simple_spinner_item, Category.values());
+        //Log.i("size","" + ((GlobalVariables) getApplication()).getCategoryKeys().size());
         cs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         category.setAdapter(cs);
 
@@ -93,7 +96,7 @@ public class DataEntry extends AppCompatActivity {
     }
 
     public void createOnClick(View v) {
-        DonationItem temp = new DonationItem(new Timestamp(System.currentTimeMillis()),((Location) location.getSelectedItem()), ""+sd.getText(), ""+ ld.getText(), ""+value.getText(), ""+category.getSelectedItem());
+        DonationItem temp = new DonationItem(new Timestamp(System.currentTimeMillis()),((Location) location.getSelectedItem()).get_name(), ""+sd.getText(), ""+ ld.getText(), ""+value.getText(), (Category) category.getSelectedItem());
         ArrayList<Location> newLocalList = new ArrayList<>();
         for(Location l : ls) {
             newLocalList.add(l);
@@ -104,6 +107,10 @@ public class DataEntry extends AppCompatActivity {
             }
         }
         ((GlobalVariables) getApplication()).setLocations(newLocalList);
+
+        Toast.makeText( this, "New Item Added", Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
     public List<Location> readSDFile() {

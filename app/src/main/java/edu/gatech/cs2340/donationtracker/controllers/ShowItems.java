@@ -29,6 +29,7 @@ public class ShowItems extends AppCompatActivity {
     List<DonationItem> dil;
     Spinner locations;
     Spinner items;
+    TextView ts;
     TextView sd;
     TextView ld;
     TextView value;
@@ -42,15 +43,16 @@ public class ShowItems extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_items);
-        if (((GlobalVariables) getApplication()).getLocations() == null) {
-            ((GlobalVariables) getApplication()).setLocations(readSDFile());
-        }
+        //if (((GlobalVariables) getApplication()).getLocations() == null) {
+        //    ((GlobalVariables) getApplication()).setLocations(readSDFile());
+        //}
 
 
 //        Log.i("here", "here");
 
         locations = (Spinner) findViewById(R.id.locationSpinner);
         items = (Spinner) findViewById(R.id.itemSpinner);
+        ts = (TextView) findViewById(R.id.timeStamp);
         sd = (TextView) findViewById(R.id.shortDescription);
         ld = (TextView) findViewById(R.id.longDescription);
         value = (TextView) findViewById(R.id.value);
@@ -80,6 +82,13 @@ public class ShowItems extends AppCompatActivity {
                 ArrayAdapter temp = new ArrayAdapter<DonationItem>(getApplicationContext(), android.R.layout.simple_spinner_item, dil);
                 temp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 items.setAdapter(temp);
+                if(dil.size() == 0) {
+                    ts.setText("");
+                    sd.setText("");
+                    ld.setText("");
+                    value.setText("");
+                    category.setText("");
+                }
             }
 
             @Override
@@ -91,10 +100,11 @@ public class ShowItems extends AppCompatActivity {
         items.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sd.setText(((DonationItem) items.getSelectedItem())._shortDescription);
-                ld.setText(((DonationItem) items.getSelectedItem())._fullDescription);
-                value.setText(((DonationItem) items.getSelectedItem())._value);
-                category.setText(((DonationItem) items.getSelectedItem())._category);
+                    ts.setText(((DonationItem) items.getSelectedItem())._ts.toString());
+                    sd.setText(((DonationItem) items.getSelectedItem())._shortDescription);
+                    ld.setText(((DonationItem) items.getSelectedItem())._fullDescription);
+                    value.setText(((DonationItem) items.getSelectedItem())._value);
+                    category.setText(((DonationItem) items.getSelectedItem())._category.toString());
             }
 
             @Override
@@ -103,7 +113,7 @@ public class ShowItems extends AppCompatActivity {
         });
     }
 
-
+/*
     public List<Location> readSDFile() {
         System.out.print("called");
 
@@ -130,6 +140,7 @@ public class ShowItems extends AppCompatActivity {
         Log.i("tag", ""+l.size());
         return l;
     }
+    */
 
 
     public void goBackHome(View v) {

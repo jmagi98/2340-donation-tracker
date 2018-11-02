@@ -91,4 +91,8 @@ public class Location {
         _items.remove(item);
     }
 
+    public String toString() {
+        return _name;
+    }
+
 }

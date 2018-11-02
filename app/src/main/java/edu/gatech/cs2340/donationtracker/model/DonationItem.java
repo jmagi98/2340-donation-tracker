@@ -8,13 +8,13 @@ public class DonationItem {
 
     //TODO: make getters and setters
     public Timestamp _ts;
-    public Location _location;
+    public String _location;
     public String _shortDescription;
     public String _fullDescription;
     public String _value;
-    public String _category;
+    public Category _category;
 
-    public DonationItem( Timestamp timestamp, Location location, String shortDescription, String fullDescription, String value, String category) {
+    public DonationItem( Timestamp timestamp, String location, String shortDescription, String fullDescription, String value, Category category) {
         _ts = timestamp;
         _location = location;
         _shortDescription = shortDescription;
@@ -23,6 +23,9 @@ public class DonationItem {
         _category = category;
     }
 
+    public String toString() {
+        return _shortDescription;
+    }
 
 
 }
