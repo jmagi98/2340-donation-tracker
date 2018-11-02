@@ -12,12 +12,15 @@ import android.widget.TextView;
 
 import com.google.firebase.database.*;
 import edu.gatech.cs2340.donationtracker.R;
+import edu.gatech.cs2340.donationtracker.model.DonationItem;
 import edu.gatech.cs2340.donationtracker.model.Location;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import edu.gatech.cs2340.donationtracker.model.GlobalVariables;
+
 
 public class LoadData extends AppCompatActivity {
 
@@ -38,6 +41,7 @@ public class LoadData extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ((GlobalVariables) getApplication()).setLocations(readSDFile());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_data);
 
@@ -139,13 +143,7 @@ public class LoadData extends AppCompatActivity {
         }
     }
 
-//    public void loaddataButtonOnClick(View view) {
-//        new Thread(new Runnable() {
-//            public void run() {
-//                setloc(locations.size());
-//            }
-//        }).start();
-//    }
+
     public void enter(View view) {
 
     }
@@ -183,7 +181,7 @@ public class LoadData extends AppCompatActivity {
         startActivity(i);
     }
 
-    private List<Location> readSDFile() {
+    public List<Location> readSDFile() {
         System.out.print("called");
 
         List<Location> l = new ArrayList<>();
@@ -198,6 +196,7 @@ public class LoadData extends AppCompatActivity {
                 Log.d("tag", "readSDFile: called ");
 
                 String[] tokens = line.split(",");
+                ArrayList<DonationItem> nullArrayList = new ArrayList<>();
                 l.add(new Location(tokens[1], Double.parseDouble(tokens[2]), Double.parseDouble(tokens[3]), tokens[4], tokens[5], tokens[6], Integer.parseInt(tokens[7]), tokens[8], tokens[9], tokens[10]));
             }
             br.close();

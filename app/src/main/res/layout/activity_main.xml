@@ -35,4 +35,24 @@
             app:layout_constraintHorizontal_bias="0.121" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintVertical_bias="0.2"
             android:onClick="loaddataButtonOnClick1"/>
+    <Button
+            android:text="Enter Item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enterItem" app:layout_constraintStart_toEndOf="@+id/button2"
+            android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.632" app:layout_constraintVertical_bias="0.196"
+            android:onClick="enterItemButtonClick"/>
+    <Button
+            android:text="Show Items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/showItemButton" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="280dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:onClick="showItems"/>
 </android.support.constraint.ConstraintLayout>

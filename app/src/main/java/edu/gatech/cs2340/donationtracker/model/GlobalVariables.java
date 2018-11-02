@@ -10,4 +10,8 @@ public class GlobalVariables extends Application {
     public List<Location> getLocations() {
         return _locations;
     }
+
+    public void setLocations(List<Location> lst) {
+        _locations = lst;
+    }
 }

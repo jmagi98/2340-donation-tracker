@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Location {
@@ -19,7 +20,7 @@ public class Location {
     private String _website;
     private List<DonationItem> _items;
 
-    public Location(String name, double latitude, double longitude, String streetAddress, String city, String state, int zip, String locationType, String phoneNumber, String website) {
+    public Location(String name, double latitude, double longitude, String streetAddress, String city, String state, int zip, String locationType, String phoneNumber, String website, List<DonationItem> items) {
         _name = name;
         _latitude = latitude;
         _longitude = longitude;
@@ -30,7 +31,13 @@ public class Location {
         _type = locationType;
         _phone_number = phoneNumber;
         _website = website;
+        _items = items;
     }
+
+    public Location(String name, double latitude, double longitude, String streetAddress, String city, String state, int zip, String locationType, String phoneNumber, String website) {
+        this(name, latitude, longitude, streetAddress, city, state, zip, locationType, phoneNumber, website, new ArrayList<DonationItem>());
+    }
+
 
     public String get_name() {
         return _name;

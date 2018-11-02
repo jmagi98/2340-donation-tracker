@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import edu.gatech.cs2340.donationtracker.R;
-import edu.gatech.cs2340.donationtracker.model.Location;
+import edu.gatech.cs2340.donationtracker.model.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;

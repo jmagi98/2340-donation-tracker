@@ -15,4 +15,5 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="title_activity_load_data">LoadData</string>
+    <string name="title_activity_show_items">ShowItems</string>
 </resources>
