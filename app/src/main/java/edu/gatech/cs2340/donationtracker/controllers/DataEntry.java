@@ -26,7 +26,10 @@ import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DataEntry extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class DataEntry extends AppCompatActivity {
     EditText sd;
     EditText ld;
     EditText value;
-    EditText category;
+    Spinner category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,26 @@ public class DataEntry extends AppCompatActivity {
         if (((GlobalVariables) getApplication()).getLocations() == null) {
             ((GlobalVariables) getApplication()).setLocations(readSDFile());
         }
+
+        if(((GlobalVariables) getApplication()).getCategoryKeys() == null) {
+            Map<String, List<DonationItem>> categories = new HashMap<>();
+            ((GlobalVariables) getApplication()).setCategoryKeys("Clothing");
+            ((GlobalVariables) getApplication()).setCategoryKeys("Hat");
+            ((GlobalVariables) getApplication()).setCategoryKeys("Kitchen");
+            ((GlobalVariables) getApplication()).setCategoryKeys("Electronics");
+            ((GlobalVariables) getApplication()).setCategoryKeys("Household");
+            ((GlobalVariables) getApplication()).setCategoryKeys("Other");
+
+
+//            categories.put("Clothing", new ArrayList<DonationItem>());
+//            categories.put("Hat", new ArrayList<DonationItem>());
+//            categories.put("Kitchen", new ArrayList<DonationItem>());
+//            categories.put("Electronics", new ArrayList<DonationItem>());
+//            categories.put("Household", new ArrayList<DonationItem>());
+//            categories.put("Other", new ArrayList<DonationItem>());
+//            ((GlobalVariables) getApplication()).set_categories(categories);
+        }
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_entry);
@@ -55,8 +78,12 @@ public class DataEntry extends AppCompatActivity {
         sd = (EditText) findViewById(R.id.shortDescriptionText);
         ld = (EditText) findViewById(R.id.longDescriptionText);
         value = (EditText) findViewById(R.id.valueEditText);
-        category = (EditText) findViewById(R.id.categoryEditText);
 
+        category = (Spinner) findViewById(R.id.categorySpinner);
+        ArrayAdapter cs = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<String>(((GlobalVariables) getApplication()).getCategoryKeys()));
+        Log.i("size","" + ((GlobalVariables) getApplication()).getCategoryKeys().size());
+        cs.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(cs);
 
         location = (Spinner) findViewById(R.id.locationSpinner);
         ArrayAdapter ad = new ArrayAdapter<Location>(getApplicationContext(), android.R.layout.simple_spinner_item, ls);
@@ -66,7 +93,7 @@ public class DataEntry extends AppCompatActivity {
     }
 
     public void createOnClick(View v) {
-        DonationItem temp = new DonationItem(new Timestamp(System.currentTimeMillis()),((Location) location.getSelectedItem()), ""+sd.getText(), ""+ ld.getText(), ""+value.getText(), ""+category.getText());
+        DonationItem temp = new DonationItem(new Timestamp(System.currentTimeMillis()),((Location) location.getSelectedItem()), ""+sd.getText(), ""+ ld.getText(), ""+value.getText(), ""+category.getSelectedItem());
         ArrayList<Location> newLocalList = new ArrayList<>();
         for(Location l : ls) {
             newLocalList.add(l);
