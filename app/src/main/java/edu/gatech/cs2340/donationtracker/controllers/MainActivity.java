@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void mapButtonOnClick(View v) {
+        Intent i = new Intent(this, MapsActivity.class);
+        startActivity(i);
+    }
+
     public void enterItemButtonClick(View v) {
         Intent i = new Intent(this, DataEntry.class);
         Toast.makeText(this, "Item has been added", Toast.LENGTH_LONG).show();

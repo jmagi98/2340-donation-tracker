@@ -43,7 +43,6 @@ public class GlobalVariables extends Application {
     }
 
     public List<Location> getLocations() {
-
         return _locations;
     }
 
